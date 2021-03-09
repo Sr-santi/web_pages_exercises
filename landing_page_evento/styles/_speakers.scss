@@ -1,0 +1,81 @@
+%format_position {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.speakers {
+    column-gap: 5px;
+    justify-content: center;
+    align-items: center;
+    border-top: solid black 3px;
+    border-bottom: solid black 3px;
+
+    .card_speaker {
+        position: relative;
+        width: 320px;
+        height: 420px;
+        margin: 15px;
+        overflow: hidden;
+        border-radius: 10px;
+
+        span {
+            position: absolute;
+            display: block;
+            width: 0px;
+            height: 0px;
+            transform: translate(-50%,-50%);
+            border-radius: 50%;
+            opacity: 0.95;
+            background: #9c27b0;
+            z-index: 1;
+            transition: width 0.5s,height 0.5s;
+        }
+
+        .img_box {
+            @extend %format_position;
+
+            img {
+                @extend %format_position;
+            }
+        }
+
+        .content_speaker {
+            @extend %format_position;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+
+            div {
+                padding: 40px;
+                color: #fff;
+                transition: 0.2s;
+                visibility: hidden;
+                opacity: 0;
+                transform: translateY(50px);
+            }
+        }
+
+        /* hover section of .card_speaker */
+        &:hover {
+            .content_speaker{
+                div {
+                    visibility: visible;
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+            }
+
+            span {
+                width: 1000px;
+                height: 1000px;
+            }
+
+        }
+
+    }
+
+}
